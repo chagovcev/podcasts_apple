@@ -1,0 +1,106 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "standard-with-typescript",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:storybook/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ],
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react"],
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
+  "rules": {
+    "react/react-in-jsx-scope": 0,
+    "@typescript-eslint/explicit-function-return-type": [
+      2,
+      {
+        "allowFunctionsWithoutTypeParameters": true
+      }
+    ],
+    "@typescript-eslint/strict-boolean-expressions": 0,
+    "react/no-unescaped-entities": 0,
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["sibling", "parent"],
+          "index",
+          "unknown"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "+(react|react-dom|react-router|react-router-dom|react-redux|react-intl)",
+            "group": "builtin",
+            "position": "before"
+          },
+          {
+            "pattern": "@components",
+            "group": "external",
+            "position": "after",
+            "patternOptions": { "partial": true }
+          },
+          {
+            "pattern": "@pages/**",
+            "group": "external",
+            "position": "after",
+            "patternOptions": { "partial": true }
+          },
+          {
+            "pattern": "@store/**",
+            "group": "external",
+            "position": "after",
+            "patternOptions": { "partial": true }
+          },
+          {
+            "pattern": "@hooks/**",
+            "group": "external",
+            "position": "after",
+            "patternOptions": { "partial": true }
+          },
+          {
+            "pattern": "@constants/**",
+            "group": "external",
+            "position": "after",
+            "patternOptions": { "partial": true }
+          },
+          {
+            "pattern": "*.constants",
+            "group": "unknown",
+            "position": "after",
+            "patternOptions": { "matchBase": true }
+          },
+          {
+            "pattern": "*.+(scss|css|json)",
+            "group": "unknown",
+            "position": "after",
+            "patternOptions": { "matchBase": true }
+          }
+        ],
+        "newlines-between": "always"
+        //        "alphabetize": {
+        //          "order": "asc",
+        //          "caseInsensitive": true
+        //        }
+      }
+    ]
+  }
+}
