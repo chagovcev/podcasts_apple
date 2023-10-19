@@ -7,6 +7,8 @@ import { useGetTodosQuery } from '@store/api';
 
 import { currentThemeSelector, toggleTheme } from '@features/themes';
 
+import { MainLayout } from '../../layouts';
+
 import styles from './Home.module.scss';
 
 const Home: FC = () => {
@@ -25,15 +27,21 @@ const Home: FC = () => {
   console.log('todos ', data);
 
   return (
-    <div className={styles.home_page}>
-      <h1 className={styles.home_page__title}> This is a Home page</h1>
+    <MainLayout isLoading={isLoading}>
+      <div className={styles.home_page}>
+        <h1 className={styles.home_page__title}> This is a Home page</h1>
 
-      <p className={styles.home_page__paragraph}>
-        Now is <b>{currentTheme}</b> theme.
-      </p>
+        <p className={styles.home_page__paragraph}>
+          Now is <b>{currentTheme}</b> theme.
+        </p>
 
-      <Button type="button" onClick={handleChangeTheme} label="Change theme" />
-    </div>
+        <Button
+          type="button"
+          onClick={handleChangeTheme}
+          label="Change theme"
+        />
+      </div>
+    </MainLayout>
   );
 };
 

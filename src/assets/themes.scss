@@ -1,7 +1,8 @@
 :root[data-theme="light"] {
     // MAIN
     --background-color: #f0f0f0;
-    --text-color: #000;
+    --primary-text-color: #000;
+    --secondary-text-color: #5766be;
 
     // BUTTON
     --primary-btn-bg: darkslateblue;
@@ -14,7 +15,8 @@
 :root[data-theme="dark"] {
     // MAIN
     --background-color: #282828;
-    --text-color: #fff;
+    --primary-text-color: #fff;
+    --secondary-text-color: hotpink;
 
     // BUTTON
     --primary-btn-bg: hotpink;
