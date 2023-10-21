@@ -1,0 +1,13 @@
+.searchbar {
+  &__input {
+    border: 1px solid var(--primary-border-color);
+    border-radius: 4px;
+    padding: 8px 10px;
+    caret-color: var(--primary-border-focus-color);
+
+    &:focus-visible {
+      outline: none;
+      border-color: var(--primary-border-focus-color);
+    }
+  }
+}

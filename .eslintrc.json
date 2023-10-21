@@ -35,6 +35,7 @@
     ],
     "@typescript-eslint/strict-boolean-expressions": 0,
     "react/no-unescaped-entities": 0,
+    "no-unused-vars": 1,
     "import/order": [
       "error",
       {
@@ -96,10 +97,6 @@
           }
         ],
         "newlines-between": "always"
-        //        "alphabetize": {
-        //          "order": "asc",
-        //          "caseInsensitive": true
-        //        }
       }
     ]
   }

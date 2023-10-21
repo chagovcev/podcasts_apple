@@ -2,26 +2,28 @@
 
 import { type FC, type PropsWithChildren } from 'react';
 
-import { Header } from '@components';
+import { Body, Header } from '@components';
 
 import s from './MainLayout.module.scss';
 
 interface IMainLayout {
-  isLoading: boolean;
-  error?: string;
+  isLoading?: boolean;
+  isError?: boolean;
 }
 
 const MainLayout: FC<PropsWithChildren<IMainLayout>> = ({
   children,
   isLoading,
-  error,
+  isError,
 }) => {
   return (
-    <div className={s.container}>
+    <div className={s.layout}>
       <Header isLoading={isLoading} />
-      <div className={s.content}>
-        {/* {error ? <ErrorMessage error={error} /> : children} */}
-        {children}
+      <div className={s.container}>
+        <div className={s.content}>
+          {isError && <Body>Something went wrong!</Body>}
+          {children}
+        </div>
       </div>
     </div>
   );

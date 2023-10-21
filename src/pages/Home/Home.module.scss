@@ -1,19 +1,29 @@
-.home_page {
-  height: 100vh;
-  padding: 20px;
-  background-color: var(--background-color);
-
-  &__title {
-    color: dodgerblue;
+.home {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 
-  &__paragraph {
-    display: inline-block;
-    padding: 10px;
-    border: 1px solid dodgerblue;
-    border-radius: 4px;
-    color: var(--text-color);
+  &__header_group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .tag {
+      padding: 0 4px;
+      background-color: #2F7BB0;
+      color: #FFFFFF;
+      font-weight: bold;
+      border-radius: 6px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
   }
 }
-
 

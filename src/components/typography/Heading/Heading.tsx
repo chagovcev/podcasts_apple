@@ -1,9 +1,10 @@
 import { createElement, type FC, type PropsWithChildren } from 'react';
 
+import { type fontWeightType } from '@constants/typography';
+
 import s from './Heading.module.scss';
 
 type levelType = '1' | '2' | '3' | '4' | '5';
-type fontWeightType = '400' | '500' | '600' | '700' | '800';
 
 interface IHeading {
   level: levelType;

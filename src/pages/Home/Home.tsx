@@ -1,45 +1,43 @@
 import { type FC } from 'react';
 
-import { Button } from '@components';
+import { Heading, SearchBar } from '@components';
 
-import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { useGetTodosQuery } from '@store/api';
-
-import { currentThemeSelector, toggleTheme } from '@features/themes';
+import { useGetPodcastsQuery } from '@store/api/podcastsApi';
 
 import { MainLayout } from '../../layouts';
 
-import styles from './Home.module.scss';
+import s from './Home.module.scss';
 
 const Home: FC = () => {
-  const currentTheme = useAppSelector(currentThemeSelector);
-  const dispatch = useAppDispatch();
+  const {
+    data: podcasts,
+    isLoading,
+    isError,
+  } = useGetPodcastsQuery({ limit: undefined, genre: undefined });
 
-  const { data, isLoading, isError } = useGetTodosQuery(undefined);
-
-  const handleChangeTheme = () => {
-    dispatch(toggleTheme());
+  const handleChangeSearchBar = (value: string) => {
+    console.log(value);
   };
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Something went wrong</p>;
-
-  console.log('todos ', data);
-
   return (
-    <MainLayout isLoading={isLoading}>
-      <div className={styles.home_page}>
-        <h1 className={styles.home_page__title}> This is a Home page</h1>
-
-        <p className={styles.home_page__paragraph}>
-          Now is <b>{currentTheme}</b> theme.
-        </p>
-
-        <Button
-          type="button"
-          onClick={handleChangeTheme}
-          label="Change theme"
-        />
+    <MainLayout isLoading={isLoading} isError={isError}>
+      <div className={s.home}>
+        <div className={s.home__header}>
+          <div className={s.home__header_group}>
+            <Heading level="2" fontWeight="600">
+              {podcasts?.length}
+            </Heading>
+            <SearchBar onChange={handleChangeSearchBar} />
+          </div>
+        </div>
+        <div className={s.home__content}>
+          {/* {allPodcasts.map((podcast) => ( */}
+          {/*    <PodcastItem */}
+          {/*        key={podcast.id.attributes['im:id']} */}
+          {/*        podcast={podcast} */}
+          {/*    /> */}
+          {/* ))} */}
+        </div>
       </div>
     </MainLayout>
   );
