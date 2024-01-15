@@ -1,0 +1,28 @@
+.episode {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  &__description {
+    margin-top: 20px;
+  }
+}
+
+.episode_podcast_info {
+  width: 25%;
+}
+
+.episode_info {
+  width: 70%;
+
+  &__item {
+    &:not(:first-child) {
+      padding-top: 20px;
+    }
+
+    &:not(:last-child) {
+      padding-bottom: 20px;
+      border-bottom: 1px solid gray;
+    }
+  }
+}

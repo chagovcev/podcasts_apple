@@ -1,39 +1,46 @@
-import { type FC } from 'react';
+import { type FC, useEffect } from 'react';
 
-import { Button } from '@components';
+import { Heading, SearchBar } from '@components';
 
+import { Podcasts, setPodcasts } from '@pages/Home/components';
+import { podcastsSelectors } from '@pages/Home/components/Podcasts/podcasts.selectors';
+
+import { useGetPodcastsQuery } from '@store/api/podcastsApi';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { useGetTodosQuery } from '@store/api';
 
-import { currentThemeSelector, toggleTheme } from '@features/themes';
+import { MainLayout } from '../../layouts';
 
-import styles from './Home.module.scss';
+import s from './Home.module.scss';
 
 const Home: FC = () => {
-  const currentTheme = useAppSelector(currentThemeSelector);
   const dispatch = useAppDispatch();
 
-  const { data, isLoading, isError } = useGetTodosQuery(undefined);
+  const podcasts = useAppSelector(podcastsSelectors);
 
-  const handleChangeTheme = () => {
-    dispatch(toggleTheme());
-  };
+  const { data, isLoading, isError } = useGetPodcastsQuery({
+    limit: undefined,
+    genre: undefined,
+  });
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Something went wrong</p>;
-
-  console.log('todos ', data);
+  useEffect(() => {
+    if (!data) return;
+    dispatch(setPodcasts(data));
+  }, [data]);
 
   return (
-    <div className={styles.home_page}>
-      <h1 className={styles.home_page__title}> This is a Home page</h1>
-
-      <p className={styles.home_page__paragraph}>
-        Now is <b>{currentTheme}</b> theme.
-      </p>
-
-      <Button type="button" onClick={handleChangeTheme} label="Change theme" />
-    </div>
+    <MainLayout isLoading={isLoading} isError={isError}>
+      <div className={s.home}>
+        <div className={s.home__header}>
+          <div className={s.home__header_group}>
+            <Heading level="2" fontWeight="600">
+              {podcasts?.length}
+            </Heading>
+            <SearchBar />
+          </div>
+        </div>
+        <Podcasts podcasts={podcasts} />
+      </div>
+    </MainLayout>
   );
 };
 

@@ -26,7 +26,9 @@
     }
   },
   "rules": {
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "react/react-in-jsx-scope": 0,
+    "@typescript-eslint/no-unused-vars": 1,
     "@typescript-eslint/explicit-function-return-type": [
       2,
       {
@@ -35,6 +37,7 @@
     ],
     "@typescript-eslint/strict-boolean-expressions": 0,
     "react/no-unescaped-entities": 0,
+    "no-unused-vars": 1,
     "import/order": [
       "error",
       {
@@ -96,10 +99,6 @@
           }
         ],
         "newlines-between": "always"
-        //        "alphabetize": {
-        //          "order": "asc",
-        //          "caseInsensitive": true
-        //        }
       }
     ]
   }
