@@ -1,0 +1,22 @@
+.podcast {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.podcast_block {
+  padding: 10px;
+  box-shadow: 0 0 5px 2px rgba(143,143,143,0.4);
+}
+
+.podcast_info {
+  width: 25%;
+}
+
+.podcast_episodes_info {
+  width: 70%;
+}
+
+.podcast_episodes {
+  margin-top: 20px;
+}

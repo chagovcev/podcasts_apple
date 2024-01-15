@@ -1,26 +1,29 @@
 import { type ChangeEvent, type FC, useEffect, useState } from 'react';
 
+import { filterPodcasts } from '@pages/Home/components';
+
+import { useAppDispatch } from '@store/hooks';
+
 import { useDebounce } from '../../hooks';
 
 import s from './SearchBar.module.scss';
 
-interface ISearchBar {
-  onChange: (value: string) => void;
-}
-
-const SearchBar: FC<ISearchBar> = ({ onChange }) => {
+const SearchBar: FC = () => {
   const [keyword, setKeyword] = useState<string>('');
 
+  const dispatch = useAppDispatch();
+
   const debouncedValue = useDebounce<string>(keyword, 500);
+
+  useEffect(() => {
+    dispatch(filterPodcasts(debouncedValue));
+  }, [debouncedValue]);
 
   const handleChange = ({
     target: { value },
   }: ChangeEvent<HTMLInputElement>) => {
     setKeyword(value);
   };
-  useEffect(() => {
-    onChange(debouncedValue);
-  }, [debouncedValue]);
 
   return (
     <div className={s.searchbar}>

@@ -1,23 +1,31 @@
-import { type FC } from 'react';
+import { type FC, useEffect } from 'react';
 
 import { Heading, SearchBar } from '@components';
 
+import { Podcasts, setPodcasts } from '@pages/Home/components';
+import { podcastsSelectors } from '@pages/Home/components/Podcasts/podcasts.selectors';
+
 import { useGetPodcastsQuery } from '@store/api/podcastsApi';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
 
 import { MainLayout } from '../../layouts';
 
 import s from './Home.module.scss';
 
 const Home: FC = () => {
-  const {
-    data: podcasts,
-    isLoading,
-    isError,
-  } = useGetPodcastsQuery({ limit: undefined, genre: undefined });
+  const dispatch = useAppDispatch();
 
-  const handleChangeSearchBar = (value: string) => {
-    console.log(value);
-  };
+  const podcasts = useAppSelector(podcastsSelectors);
+
+  const { data, isLoading, isError } = useGetPodcastsQuery({
+    limit: undefined,
+    genre: undefined,
+  });
+
+  useEffect(() => {
+    if (!data) return;
+    dispatch(setPodcasts(data));
+  }, [data]);
 
   return (
     <MainLayout isLoading={isLoading} isError={isError}>
@@ -27,17 +35,10 @@ const Home: FC = () => {
             <Heading level="2" fontWeight="600">
               {podcasts?.length}
             </Heading>
-            <SearchBar onChange={handleChangeSearchBar} />
+            <SearchBar />
           </div>
         </div>
-        <div className={s.home__content}>
-          {/* {allPodcasts.map((podcast) => ( */}
-          {/*    <PodcastItem */}
-          {/*        key={podcast.id.attributes['im:id']} */}
-          {/*        podcast={podcast} */}
-          {/*    /> */}
-          {/* ))} */}
-        </div>
+        <Podcasts podcasts={podcasts} />
       </div>
     </MainLayout>
   );
