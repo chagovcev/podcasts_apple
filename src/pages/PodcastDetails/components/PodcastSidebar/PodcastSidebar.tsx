@@ -20,8 +20,6 @@ const PodcastSidebar: FC<IPodcastSideBar> = ({ podcast, description }) => {
     });
   };
 
-  console.log('podcast!', podcast);
-
   const isDevelopment = process.env.NODE_ENV === 'development';
 
   const { imageMin, imageMax } = podcast.imageSrc;

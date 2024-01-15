@@ -1,7 +1,7 @@
 import { type FC, useMemo } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { Home, PodcastDetails } from '@pages';
+import { EpisodeDetail, Home, PodcastDetails } from '@pages';
 
 const App: FC = () => {
   const router = useMemo(
@@ -14,6 +14,10 @@ const App: FC = () => {
         {
           path: '/podcast/:podcastId',
           element: <PodcastDetails />,
+        },
+        {
+          path: '/podcast/:podcastId/episode/:episodeId',
+          element: <EpisodeDetail />,
         },
       ]),
     [],

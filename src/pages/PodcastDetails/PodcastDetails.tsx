@@ -47,6 +47,7 @@ const PodcastDetails = () => {
                       <td>
                         <Link
                           to={`/podcast/${podcastId}/episode/${episode.id}`}
+                          state={{ description }}
                         >
                           {episode.name}
                         </Link>
