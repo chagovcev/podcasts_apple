@@ -22,20 +22,20 @@ And also there is an opportunity to create stories and docs for app with StoryBo
 
 ![demo.gif](https://github.com/chagovcev/podcasts_apple/blob/develop/demo.gif)
 
-> ### Home page 
-> In th Home page is showing all podcasts. In the top right corner there is a search bar. You can filter podcast's list by typing in this search field.
->
-> ### Podcast page
-> Podcast page has main podcast information, like title, artist name, description and image. Also, this page has list of as max 20 episodes of current podcast. By clicking to some episode, you redirect to the Episode page.
->
-> ### Episode page
-> Episode page has the same block with podcast main information, and description of selected episode. Besides, there is the audio player which player that allows you to listen to a podcast episode.
+### Home page 
+In th Home page is showing all podcasts. In the top right corner there is a search bar. You can filter podcast's list by typing in this search field.
+
+### Podcast page
+Podcast page has main podcast information, like title, artist name, description and image. Also, this page has list of as max 20 episodes of current podcast. By clicking to some episode, you redirect to the Episode page.
+
+### Episode page
+Episode page has the same block with podcast main information, and description of selected episode. Besides, there is the audio player which player that allows you to listen to a podcast episode.
 
 
 ## Steps to run application:
 
 
-- `git clone https://github.com/chagovcev/react_app_starter.git .`
+- `git clone https://github.com/chagovcev/podcasts_apple.git .`
 - `npm install`
 
 Now project is installed.
