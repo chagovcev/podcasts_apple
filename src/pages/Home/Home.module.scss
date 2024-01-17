@@ -12,8 +12,8 @@
 
     .tag {
       padding: 0 4px;
-      background-color: #2F7BB0;
-      color: #FFFFFF;
+      background-color: var(--primary-bg-color);
+      color: var(--primary-text-color);
       font-weight: bold;
       border-radius: 6px;
     }

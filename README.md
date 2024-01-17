@@ -24,6 +24,8 @@ Podcast page has main podcast information, like title, artist name, description 
 
 Episode page has the same block with podcast information, and description of selected episode. Besides, there is the audio player which player that allows you to listen to a podcast episode.
 
+![demo.gif](https://github.com/chagovcev/podcasts_apple/blob/develop/demo.gif)
+
 ## You can run app with two commands:
 
 Development mode:
