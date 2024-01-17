@@ -1,6 +1,6 @@
 :root[data-theme="light"] {
     // MAIN
-    --background-color: #f0f0f0;
+    --primary-bg-color: #ffffff;
     --primary-text-color: #000;
     --primary-border-color: #1c2054;
     --primary-border-focus-color: #2e338a;
@@ -16,7 +16,7 @@
 
 :root[data-theme="dark"] {
     // MAIN
-    --background-color: #282828;
+    --primary-bg-color: #282828;
     --primary-text-color: #fff;
     --primary-border-color: #5e0d50;
     --primary-border-focus-color: #a6148e;
